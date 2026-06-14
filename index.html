@@ -346,13 +346,33 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 @media(max-width:960px){
   nav{padding:.8rem 1.5rem}
   .nlinks{display:none}
-  .hbg{display:flex;z-index:1001;position:relative}
-  body.mo .nlinks{display:flex;flex-direction:column;position:fixed;inset:0;top:0;padding-top:70px;background:linear-gradient(180deg,#07071E 0%,#030310 100%);align-items:center;justify-content:center;gap:2.5rem;z-index:999}
+  .hbg{display:flex;z-index:10001;position:relative}
+  
+  /* --- BULLETPROOF MOBILE MENU FIX --- */
+  body.mo .nlinks{
+    display:flex !important;
+    flex-direction:column;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    width:100vw;
+    height:100vh;
+    /* The !important tags force the Android browser to paint the background */
+    background-color:#050514 !important; 
+    align-items:center;
+    justify-content:center;
+    gap:2.5rem;
+    z-index:10000 !important;
+  }
+  
   body.mo .nlinks a{font-size:1.1rem;letter-spacing:4px}
-  body.mo .ncta{font-size:.85rem;padding:.8rem 2.5rem}
+  body.mo .ncta{font-size:.85rem;padding:.8rem 2.5rem;background:rgba(0,245,255,.1)!important}
+  
+  /* Animated X for the menu button */
   body.mo .hbg span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--m)}
   body.mo .hbg span:nth-child(2){opacity:0}
   body.mo .hbg span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--m)}
+
+  /* --- EXISTING MOBILE LAYOUT --- */
   .hero-g{grid-template-columns:1fr;gap:3rem}
   .hero-r{order:-1}
   .hcard{width:270px;height:340px}
