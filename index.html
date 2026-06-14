@@ -170,15 +170,52 @@ nav::after{content:'';position:absolute;bottom:0;left:0;height:1px;width:var(--n
 .gs-val{font-family:var(--FD);font-size:.9rem;font-weight:700;color:var(--t)}
 .gs-sub{font-size:.78rem;color:var(--d);margin-top:.1rem}
 
-/* ── SECTIONS ── */
-section{padding:7rem 3rem;position:relative}
-.si{max-width:1160px;margin:0 auto}
+/* ════════════════════════════════════════
+   ADVANCED SECTION BACKGROUNDS (NEW)
+════════════════════════════════════════ */
+section{padding:7rem 3rem;position:relative;z-index:10}
+.si{max-width:1160px;margin:0 auto;position:relative;z-index:5}
+
+/* About Section Ambient Glow */
+#about::before {
+  content:''; position:absolute; top:0; left:-10%; width:60%; height:100%;
+  background:radial-gradient(circle, rgba(0,245,255,0.06) 0%, transparent 60%);
+  z-index:-1; pointer-events:none;
+}
+
+/* Skills Section Gradient Strip */
+#skills {
+  background:linear-gradient(180deg, rgba(3,3,16,0) 0%, rgba(123,47,255,0.04) 50%, rgba(3,3,16,0) 100%);
+  border-top:1px solid rgba(123,47,255,0.05);
+  border-bottom:1px solid rgba(123,47,255,0.05);
+}
+
+/* Achievements Ambient Pink Glow */
+#achievements::before {
+  content:''; position:absolute; bottom:0; right:-10%; width:60%; height:100%;
+  background:radial-gradient(circle at bottom right, rgba(255,0,128,0.05) 0%, transparent 70%);
+  z-index:-1; pointer-events:none;
+}
+
+/* Gallery Deep Cinematic Background */
+#gallery {
+  background:rgba(0,0,0,0.3);
+  box-shadow:inset 0 15px 50px rgba(0,0,0,0.5), inset 0 -15px 50px rgba(0,0,0,0.5);
+}
+
+/* Contact Cyan Gradient Floor */
+#contact {
+  background:linear-gradient(0deg, rgba(0,245,255,0.03) 0%, transparent 100%);
+}
+
 .sp{font-family:var(--FM);font-size:.62rem;color:var(--c);letter-spacing:4px;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
 .sp span{flex:1;height:1px;max-width:100px;background:linear-gradient(90deg,var(--c),transparent)}
 .sh{font-family:var(--FD);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;margin-bottom:1.2rem}
 .sh em{font-style:normal;background:linear-gradient(90deg,var(--c),var(--m));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sd{font-size:1rem;color:var(--d);max-width:560px;line-height:1.9}
-.sdiv{height:1px;max-width:1160px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(0,245,255,.12),rgba(255,0,128,.08),transparent)}
+
+/* Refined Dividers */
+.sdiv{height:1px;max-width:1160px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(0,245,255,.15),rgba(255,0,128,.1),transparent);box-shadow:0 0 10px rgba(0,245,255,.1)}
 
 /* ADVANCED GLOW CARDS */
 .gc{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;backdrop-filter:blur(20px);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.19,1,.22,1),border-color .3s,box-shadow .35s}
@@ -327,7 +364,7 @@ section{padding:7rem 3rem;position:relative}
 .fn{font-family:var(--FM);font-size:.6rem;color:var(--d);margin-top:.4rem}
 
 /* ── FOOTER ── */
-footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background:rgba(3,3,16,.85);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background:rgba(3,3,16,.85);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:10}
 .fl2{font-family:var(--FD);font-size:.9rem;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,var(--c),var(--m));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .fc{font-family:var(--FM);font-size:.6rem;color:var(--d);letter-spacing:1px}
 .fc span{color:var(--c)}
@@ -342,22 +379,33 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fi{from{opacity:0}to{opacity:1}}
 
-/* ── RESPONSIVE ── */
+/* ════════════════════════════════════════
+   RESPONSIVE & MOBILE MENU GRID
+════════════════════════════════════════ */
 @media(max-width:960px){
   nav{padding:.8rem 1.5rem}
   .nlinks{display:none}
   .hbg{display:flex;z-index:10001;position:relative}
   
-  /* --- BULLETPROOF MOBILE MENU FIX --- */
+  /* Upgraded Hacker Grid Mobile Menu overlay */
   body.mo .nlinks{
     display:flex !important;
     flex-direction:column;
     position:fixed;
     top:0; left:0; right:0; bottom:0;
-    width:100vw;
-    height:100vh;
-    /* The !important tags force the Android browser to paint the background */
-    background-color:#050514 !important; 
+    width:100vw; height:100vh;
+    
+    /* Solid base fixes Android transparency bug */
+    background-color:#03030a !important; 
+    
+    /* Futuristic layered background grid & glows */
+    background-image:
+      radial-gradient(circle at 50% -10%, rgba(0, 245, 255, 0.25), transparent 40%),
+      radial-gradient(circle at 50% 110%, rgba(255, 0, 128, 0.25), transparent 40%),
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px !important;
+    
     align-items:center;
     justify-content:center;
     gap:2.5rem;
@@ -365,14 +413,12 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
   }
   
   body.mo .nlinks a{font-size:1.1rem;letter-spacing:4px}
-  body.mo .ncta{font-size:.85rem;padding:.8rem 2.5rem;background:rgba(0,245,255,.1)!important}
+  body.mo .ncta{font-size:.85rem;padding:.8rem 2.5rem;background:rgba(0,245,255,.08)!important;border-color:rgba(0,245,255,.5)}
   
-  /* Animated X for the menu button */
   body.mo .hbg span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--m)}
   body.mo .hbg span:nth-child(2){opacity:0}
   body.mo .hbg span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--m)}
-
-  /* --- EXISTING MOBILE LAYOUT --- */
+  
   .hero-g{grid-template-columns:1fr;gap:3rem}
   .hero-r{order:-1}
   .hcard{width:270px;height:340px}
@@ -492,7 +538,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
           <div class="hud-data br"><div>TIER: SAMRAT</div><div>GAME: SF2.0</div><div>CTRL: GYRO+4F</div><div>KD: 8.4</div></div>
           <div class="rings">
             <div class="rng r1"></div><div class="rng r2"></div><div class="rng r3"></div>
-            <!-- ★ LOGO CIRCLE — replace src with your image URL ★ -->
             <div class="rc">
               <img src="https://i.postimg.cc/qRf9XXV3/IMG-20260528-140455-250.webp" alt="Luffy Logo"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -634,8 +679,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
     <p class="sd">Click any card to watch the video directly in the cinematic player.</p>
 
     <div class="gal-grid rv">
-      <!-- To use the Lightbox, add data-yt="YOUR_VIDEO_ID" to the anchor tag. -->
-      <!-- Replace dQw4w9WgXcQ with your video IDs -->
       <a class="gcard featured yt-trigger" href="#" data-yt="dQw4w9WgXcQ">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Luffy Highlight Video" onerror="this.src='https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'"/>
