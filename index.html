@@ -13,8 +13,8 @@
   --t:#E8EAFF;--d:#4A4A70;
   --FD:'Orbitron',monospace;--FB:'Rajdhani',sans-serif;--FM:'Share Tech Mono',monospace;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--t);font-family:var(--FB);overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100%}
+body{background:var(--bg);color:var(--t);font-family:var(--FB);overflow-x:hidden;width:100%;max-width:100%;cursor:none}
 ::selection{background:var(--c);color:#000}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
@@ -39,7 +39,7 @@ body.hov .cur-ring{width:60px;height:60px;border-color:rgba(255,0,128,.6)}
 body::before{content:'';position:fixed;inset:0;z-index:3;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;animation:noise-shift 8s infinite}
 @keyframes noise-shift{0%,100%{background-position:0 0}25%{background-position:10px -5px}50%{background-position:-5px 10px}75%{background-position:5px 5px}}
 body::after{content:'';position:fixed;inset:0;z-index:4;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.035) 2px,rgba(0,0,0,.035) 4px)}
-.wrap{position:relative;z-index:10}
+.wrap{position:relative;z-index:10;width:100%;overflow-x:hidden}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:.9rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(3,3,16,.6);backdrop-filter:blur(30px) saturate(200%);border-bottom:1px solid rgba(0,245,255,.08);transition:background .3s}
@@ -394,7 +394,7 @@ section{padding:7rem 3rem;position:relative}
 .ctr2{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border-radius:6px;margin-bottom:.8rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);transition:border-color .3s,transform .25s}
 .ctr2:hover{border-color:rgba(0,245,255,.2);transform:translateX(4px)}
 .ctico{font-size:1rem;width:30px;text-align:center}
-.cttx{font-family:var(--FM);font-size:.7rem;color:var(--t)}
+.cttx{font-family:var(--FM);font-size:.7rem;color:var(--t);word-break:break-word}
 .cf{display:flex;flex-direction:column;gap:.85rem}
 .fb{padding:1rem 1.3rem;border-radius:6px;font-family:var(--FM);font-size:.72rem;letter-spacing:1px;display:none}
 .fb.ok{background:rgba(0,245,255,.07);border:1px solid rgba(0,245,255,.3);color:var(--c)}
@@ -457,6 +457,12 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
   .achg{grid-template-columns:1fr}
   .ctrs{grid-template-columns:1fr 1fr}
 }
+@media(max-width:400px){
+  .stats-hud{flex-wrap:wrap}
+  .sth{flex:1 1 45%;border-bottom:1px solid rgba(255,255,255,.06)}
+  .sth:nth-child(2){border-right:none}
+  .sth:nth-child(3),.sth:nth-child(4){border-bottom:none}
+}
 
 /* ── MISC ── */
 .burst{position:fixed;pointer-events:none;z-index:99995;width:6px;height:6px;border-radius:50%;transform:translate(-50%,-50%)}
@@ -478,7 +484,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="wrap">
 
-<!-- NAV -->
 <nav id="nav">
   <div class="nlogo">XT.FTW.LUFFY</div>
   <ul class="nlinks" id="nl">
@@ -492,7 +497,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
   <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hud-br tl"></div><div class="hud-br tr"></div>
   <div class="hud-br bl"></div><div class="hud-br br2"></div>
@@ -527,7 +531,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
           <div class="hud-data br"><div>TIER: SAMRAT</div><div>GAME: SF2.0</div><div>CTRL: GYRO+4F</div><div>KD: 8.4</div></div>
           <div class="rings">
             <div class="rng r1"></div><div class="rng r2"></div><div class="rng r3"></div>
-            <!-- ★ LOGO CIRCLE — replace src with your image URL ★ -->
             <div class="rc">
               <img src="https://i.postimg.cc/qRf9XXV3/IMG-20260528-140455-250.webp" alt="Luffy Logo"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -543,9 +546,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     GLASS 3-LINE STRIP
-══════════════════════════════════ -->
 <div class="glass-strip rv">
   <div class="glass-strip-inner">
     <div class="gs-cell">
@@ -577,7 +577,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="si">
     <div class="sp">About Me <span></span></div>
@@ -607,7 +606,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="si">
     <div class="sp">Skill Set <span></span></div>
@@ -639,7 +637,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="si">
     <div class="sp">Achievements <span></span></div>
@@ -663,9 +660,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- ══════════════════════════════════
-     GALLERY — Landscape 16:9 + YouTube
-══════════════════════════════════ -->
 <section id="gallery">
   <div class="si">
     <div class="sp">Gallery <span></span></div>
@@ -674,8 +668,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
     <div class="gal-grid rv">
 
-      <!-- ★ FEATURED YouTube video (spans 2 cols) ★ -->
-      <!-- Replace dQw4w9WgXcQ with your actual YouTube video ID -->
       <a class="gcard featured" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Luffy Highlight Video"
@@ -689,7 +681,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
         </div>
       </a>
 
-      <!-- ★ YouTube video 2 ★ Replace VIDEO_ID_2 -->
       <a class="gcard" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" rel="noopener">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg" alt="Gameplay"
@@ -703,7 +694,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
         </div>
       </a>
 
-      <!-- ★ YouTube video 3 ★ Replace VIDEO_ID_3 -->
       <a class="gcard" href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" rel="noopener">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg" alt="Sensitivity Guide"
@@ -717,7 +707,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
         </div>
       </a>
 
-      <!-- ★ YouTube video 4 ★ Replace VIDEO_ID_4 -->
       <a class="gcard" href="https://www.youtube.com/watch?v=VIDEO_ID_4" target="_blank" rel="noopener">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg" alt="Clutch Play"
@@ -731,7 +720,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
         </div>
       </a>
 
-      <!-- ★ YouTube video 5 ★ Replace VIDEO_ID_5 -->
       <a class="gcard" href="https://www.youtube.com/watch?v=VIDEO_ID_5" target="_blank" rel="noopener">
         <div class="gcard-ratio has-yt">
           <img src="https://img.youtube.com/vi/VIDEO_ID_5/maxresdefault.jpg" alt="Squad Match"
@@ -751,7 +739,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- SOCIAL -->
 <section id="connect">
   <div class="si">
     <div class="sp">Social <span></span></div>
@@ -783,7 +770,6 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;background
 
 <div class="sdiv"></div>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="si">
     <div class="sp">Contact <span></span></div>
